@@ -109,7 +109,6 @@ int main() {
     cout << "}" << endl << endl;
 
     int S1_sh[15][4];
-
     int H_sh_T[15][4];
 
     for (int i = 0; i < 15; i++) {
@@ -133,10 +132,21 @@ int main() {
 
     cout << "}" << endl << endl;
 
-    for (int i = 0; i < 15; i++) {
+    /*for (int i = 0; i < 15; i++) {
         for (int k = 0; k < 15; k++) {
             int sum = 0;
             for (int j = 0; j < 4; j++) {
+                sum = (sum + W1_sh[i][j] * H_sh_T[j][k]) % 2;
+            }
+            S1_sh[i][k] = sum;
+        }
+    }*/
+
+
+    for (int k=0; k<4; k++) {
+        int sum = 0;
+        for (int i = 0; i < 15; i++) {
+            for (int j = 0; j < 15; j++) {
                 sum = (sum + W1_sh[i][j] * H_sh_T[j][k]) % 2;
             }
             S1_sh[i][k] = sum;
