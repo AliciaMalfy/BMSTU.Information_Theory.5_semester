@@ -143,7 +143,7 @@ int main() {
     }*/
 
 
-    for (int k=0; k<4; k++) {
+    for (int k = 0; k < 4; k++) {
         int sum = 0;
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15; j++) {
@@ -167,6 +167,45 @@ int main() {
     }
 
     cout << "}" << endl << endl;
+
+
+    for (int i = 0; i < 15; i++) {
+        cout << "Если S = {";
+
+        for (int j = 0; j < 4; j++) {
+            if (j == 3) {
+                cout << S1_sh[i][j];
+            } else {
+                cout << S1_sh[i][j] << ", ";
+            }
+        }
+
+        cout << "} , то " << endl;
+        cout << "е = {";
+
+        for (int q = 0; q < 15; q++) {
+            if (q == 14) {
+                cout << e1_sh[i][q];
+            } else {
+                cout << e1_sh[i][q] << ", ";
+            }
+        }
+
+        cout << "}" << endl;
+        cout << "Значит, ошибка допущена в " << i << " бите и V = {";
+
+        W1_sh[i][i] = (W1_sh[i][i] + 1) % 2;
+
+        for (int m = 0; m < 15; m++) {
+            if (m == 14) {
+                cout << W1_sh[i][m];
+            } else {
+                cout << W1_sh[i][m] << ", ";
+            }
+        }
+
+        cout << "}" << endl << endl;
+    }
 
     return 0;
 }
