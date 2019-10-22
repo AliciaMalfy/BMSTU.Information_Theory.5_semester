@@ -132,17 +132,6 @@ int main() {
 
     cout << "}" << endl << endl;
 
-    /*for (int i = 0; i < 15; i++) {
-        for (int k = 0; k < 15; k++) {
-            int sum = 0;
-            for (int j = 0; j < 4; j++) {
-                sum = (sum + W1_sh[i][j] * H_sh_T[j][k]) % 2;
-            }
-            S1_sh[i][k] = sum;
-        }
-    }*/
-
-
     for (int k = 0; k < 4; k++) {
         int sum = 0;
         for (int i = 0; i < 15; i++) {
@@ -167,7 +156,6 @@ int main() {
     }
 
     cout << "}" << endl << endl;
-
 
     for (int i = 0; i < 15; i++) {
         cout << "Если S = {";
@@ -201,6 +189,130 @@ int main() {
                 cout << W1_sh[i][m];
             } else {
                 cout << W1_sh[i][m] << ", ";
+            }
+        }
+
+        cout << "}" << endl << endl;
+    }
+
+    cout<<"Расширенный код:"<<endl;
+
+    int e1_ex[16][16];
+
+    for (int i = 0; i < 16; i++) {
+        for (int j = 0; j < 16; j++) {
+            if (i == j) {
+                e1_ex[i][j] = 1;
+            } else {
+                e1_ex[i][j] = 0;
+            }
+        }
+    }
+
+    int W1_ex[16][16];
+
+    for (int i = 0; i < 16; i++) {
+        for (int j = 0; j < 16; j++) {
+            W1_ex[i][j] = (V_ex[j] + e1_ex[i][j]) % 2;
+        }
+    }
+
+    cout << "W = {" << endl;
+
+    for (int i = 0; i < 16; i++) {
+        for (int j = 0; j < 16; j++) {
+            if (j == 15) {
+                cout << W1_ex[i][j];
+            } else {
+                cout << W1_ex[i][j] << ", ";
+            }
+        }
+        cout << endl;
+    }
+
+    cout << "}" << endl << endl;
+
+    int S1_ex[16][5];
+    int H_ex_T[16][5];
+
+    for (int i = 0; i < 16; i++) {
+        for (int j = 0; j < 5; j++) {
+            H_ex_T[i][j] = H_ex[j][i];
+        }
+    }
+
+    cout << "H_T = {" << endl;
+
+    for (int i = 0; i < 16; i++) {
+        for (int j = 0; j < 5; j++) {
+            if (j == 4) {
+                cout << H_ex_T[i][j];
+            } else {
+                cout << H_ex_T[i][j] << ", ";
+            }
+        }
+        cout << endl;
+    }
+
+    cout << "}" << endl << endl;
+
+    for (int k = 0; k < 5; k++) {
+        int sum = 0;
+        for (int i = 0; i < 16; i++) {
+            for (int j = 0; j < 16; j++) {
+                sum = (sum + W1_ex[i][j] * H_ex_T[j][k]) % 2;
+            }
+            S1_ex[i][k] = sum;
+        }
+    }
+
+    cout << "S = {" << endl;
+
+    for (int i = 0; i < 16; i++) {
+        for (int j = 0; j < 5; j++) {
+            if (j == 4) {
+                cout << S1_ex[i][j];
+            } else {
+                cout << S1_ex[i][j] << ", ";
+            }
+        }
+        cout << endl;
+    }
+
+    cout << "}" << endl << endl;
+
+    for (int i = 0; i < 16; i++) {
+        cout << "Если S = {";
+
+        for (int j = 0; j < 5; j++) {
+            if (j == 4) {
+                cout << S1_ex[i][j];
+            } else {
+                cout << S1_ex[i][j] << ", ";
+            }
+        }
+
+        cout << "} , то " << endl;
+        cout << "е = {";
+
+        for (int q = 0; q < 16; q++) {
+            if (q == 15) {
+                cout << e1_ex[i][q];
+            } else {
+                cout << e1_ex[i][q] << ", ";
+            }
+        }
+
+        cout << "}" << endl;
+        cout << "Значит, ошибка допущена в " << i << " бите и V = {";
+
+        W1_ex[i][i] = (W1_ex[i][i] + 1) % 2;
+
+        for (int m = 0; m < 16; m++) {
+            if (m == 15) {
+                cout << W1_ex[i][m];
+            } else {
+                cout << W1_ex[i][m] << ", ";
             }
         }
 
