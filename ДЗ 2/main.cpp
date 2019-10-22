@@ -313,20 +313,34 @@ int main() {
 
     int e2_sh[105][15];
 
-    for (int i = 0; i < 105; i++) {
-        for (int j = 0; j < 15; j++) {
-           e2_sh[i][j]=1;
-           
+    for (int k=0; k<15; k++) {
+        for (int i = k; i < 105; i++) {
+            e2_sh[i][k]=1;
+            for (int j = i + 1; j < 15; j++) {
+
+                e2_sh[k][15-j] = 1;
+                e2_sh[i][j]=0;
+            }
         }
     }
 
-    int W2_sh[][15];
+    cout<<"e = {"<<endl;
+
+    for (int i = 0; i < 105; i++){
+        for (int j = 0; j < 15; j++){
+            cout<<e2_sh[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+
+   /* int W2_sh[][15];
 
     for (int i = 0; i < ; i++) {
         for (int j = 0; j < 15; j++) {
             W2_sh[i][j] = (V_sh[j] + e2_sh[i][j]) % 2;
         }
     }
+*/
 
     return 0;
 }
