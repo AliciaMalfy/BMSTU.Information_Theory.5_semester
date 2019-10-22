@@ -59,8 +59,8 @@ int main() {
     }
 
     cout << V_ex[15] << "}" << endl << endl;
-    cout << "Задание 2:" << endl << endl;
-    cout << "Укороченный код:" << endl;
+    cout << "Задание 2:" << endl;
+    cout << "Укороченный код:" << endl << endl;
 
     int e1_sh[15][15];
 
@@ -73,17 +73,6 @@ int main() {
             }
         }
     }
-
-    /*
-     вывод матрицы e1 (проверка):
-          for (int i = 0; i < 15; i++) {
-           for (int j = 0; j < 15; j++) {
-               cout << e1_sh[i][j] << " ";
-           }
-           cout << endl;
-        }
-        cout<<endl;
-     */
 
     int W1_sh[15][15];
 
@@ -195,7 +184,7 @@ int main() {
         cout << "}" << endl << endl;
     }
 
-    cout<<"Расширенный код:"<<endl;
+    cout << "Расширенный код:" << endl << endl;
 
     int e1_ex[16][16];
 
@@ -317,6 +306,26 @@ int main() {
         }
 
         cout << "}" << endl << endl;
+    }
+
+    cout << "Задание 3:" << endl;
+    cout << "Укороченный код:" << endl << endl;
+
+    int e2_sh[105][15];
+
+    for (int i = 0; i < 105; i++) {
+        for (int j = 0; j < 15; j++) {
+           e2_sh[i][j]=1;
+           
+        }
+    }
+
+    int W2_sh[][15];
+
+    for (int i = 0; i < ; i++) {
+        for (int j = 0; j < 15; j++) {
+            W2_sh[i][j] = (V_sh[j] + e2_sh[i][j]) % 2;
+        }
     }
 
     return 0;
