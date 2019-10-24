@@ -313,13 +313,17 @@ int main() {
 
     int e2_sh[105][15];
 
-    for (int k=0; k<15; k++) {
-        for (int i = k; i < 105; i++) {
-            e2_sh[i][k]=1;
-            for (int j = i + 1; j < 15; j++) {
+    for (int i=0; i<105; i++) {
+        for (int j = 0; j < 15; j++) {
+            e2_sh[i][j]=0;
+            }
+    }
 
-                e2_sh[k][15-j] = 1;
-                e2_sh[i][j]=0;
+    for (int i=0; i<105; i++) {
+        for (int j = i; j < 15; j++) {
+            e2_sh[i][j] = 1;
+            for (int k = j; k < 15; k++) {
+                    e2_sh[j][k] = 1;
             }
         }
     }
