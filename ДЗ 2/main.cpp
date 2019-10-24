@@ -313,7 +313,20 @@ int main() {
 
     int e2_sh[105][15];
 
-    for (int i=0; i<105; i++) {
+    for (int k=0; k<115; k++) {
+        for (int i = k+1; i < 15; i++) {
+            for (int j = i; j < 15; j++) {
+                e2_sh[k-1][i]=1;
+                if (i == j) {
+                    e1_sh[i][j] = 1;
+                } else {
+                    e1_sh[i][j] = 0;
+                }
+            }
+        }
+    }
+
+    /*for (int i=0; i<105; i++) {
         for (int j = 0; j < 15; j++) {
             e2_sh[i][j]=0;
             }
@@ -326,7 +339,7 @@ int main() {
                     e2_sh[j][k] = 1;
             }
         }
-    }
+    }*/
 
     cout<<"e = {"<<endl;
 
