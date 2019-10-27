@@ -312,52 +312,54 @@ int main() {
     cout << "Укороченный код:" << endl << endl;
 
     int e2_sh[105][15];
+    int *dop_mas_e2 = new int[15];
+    bool ind=false;
+    int j=1;
 
-    for (int k=0; k<115; k++) {
-        for (int i = k+1; i < 15; i++) {
-            for (int j = i; j < 15; j++) {
-                e2_sh[k-1][i]=1;
-                if (i == j) {
-                    e1_sh[i][j] = 1;
-                } else {
-                    e1_sh[i][j] = 0;
-                }
-            }
+    for (int i = 0; i < 115; i++) {
+        for (j = 0; j < 15; j++) {
+            e2_sh[i][j] = 0;
         }
     }
 
-    /*for (int i=0; i<105; i++) {
+    for (int i = 0; i < 15; i++) {
+        dop_mas_e2[i] = 0;
+    }
+
+    for (int i = 0; i < 114; i++) {
+        if (ind) {
+            j = i + 1;
+            ind = false;
+        }
+
+        dop_mas_e2[i] = 1;
+
+        for (j; j < 15; j++) {
+            dop_mas_e2[j] = 1;
+
+for(int k=0; k<15-j; k++){
+    for (int m=0; m<15; m++){
+        e2_sh[k][m]=dop_mas_e2[m];
+    }
+}
+                 //   e2_sh[i][j] = dop_mas_e2[j];
+
+
+            dop_mas_e2[j] = 0;
+        }
+
+        dop_mas_e2[i] = 0;
+        ind = true;
+    }
+
+    cout << "e = {" << endl;
+
+    for (int i = 0; i < 105; i++) {
         for (int j = 0; j < 15; j++) {
-            e2_sh[i][j]=0;
-            }
-    }
-
-    for (int i=0; i<105; i++) {
-        for (int j = i; j < 15; j++) {
-            e2_sh[i][j] = 1;
-            for (int k = j; k < 15; k++) {
-                    e2_sh[j][k] = 1;
-            }
+            cout << e2_sh[i][j] << " ";
         }
-    }*/
-
-    cout<<"e = {"<<endl;
-
-    for (int i = 0; i < 105; i++){
-        for (int j = 0; j < 15; j++){
-            cout<<e2_sh[i][j]<<" ";
-        }
-        cout<<endl;
+        cout << endl;
     }
-
-   /* int W2_sh[][15];
-
-    for (int i = 0; i < ; i++) {
-        for (int j = 0; j < 15; j++) {
-            W2_sh[i][j] = (V_sh[j] + e2_sh[i][j]) % 2;
-        }
-    }
-*/
 
     return 0;
 }
