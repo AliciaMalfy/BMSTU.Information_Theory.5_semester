@@ -311,19 +311,14 @@ int main() {
     cout << "Задание 3:" << endl;
     cout << "Укороченный код:" << endl << endl;
 
-    int e2_sh[105][15];
-    int *dop_mas_e2 = new int[15];
-    bool ind=false;
-    int j=1;
-
-    for (int i = 0; i < 115; i++) {
-        for (j = 0; j < 15; j++) {
-            e2_sh[i][j] = 0;
-        }
-    }
+    int e2_sh[15];
+    int W2_sh[15];
+    int S2_sh[4];
+    bool ind = false;
+    int j = 1;
 
     for (int i = 0; i < 15; i++) {
-        dop_mas_e2[i] = 0;
+        e2_sh[i] = 0;
     }
 
     for (int i = 0; i < 114; i++) {
@@ -332,33 +327,159 @@ int main() {
             ind = false;
         }
 
-        dop_mas_e2[i] = 1;
+        e2_sh[i] = 1;
+
 
         for (j; j < 15; j++) {
-            dop_mas_e2[j] = 1;
+            e2_sh[j] = 1;
 
-for(int k=0; k<15-j; k++){
-    for (int m=0; m<15; m++){
-        e2_sh[k][m]=dop_mas_e2[m];
-    }
-}
-                 //   e2_sh[i][j] = dop_mas_e2[j];
+            for (int k = 0; k < 4; k++) {
+                int sum = 0;
+                for (int n = 0; n < 15; n++) {
+                    sum = (sum + W2_sh[n] * H_sh_T[n][k]) % 2;
+                }
+                S2_sh[k] = sum;
+            }
+
+            cout << "Если S = {";
 
 
-            dop_mas_e2[j] = 0;
+            for (int m = 0; m < 4; m++) {
+                if (m == 3) {
+                    cout << S2_sh[m];
+                } else {
+                    cout << S2_sh[m] << ", ";
+                }
+            }
+            cout << "}, то" << endl;
+
+            cout << "e = {";
+            for (int k = 0; k < 15; k++) {
+                if (k == 14) {
+                    cout << e2_sh[k];
+                } else {
+                    cout << e2_sh[k] << ", ";
+                }
+            }
+
+            cout << "}," << endl;
+
+            cout << "W = {";
+
+            for (int k = 0; k < 15; k++) {
+                W2_sh[k] = (V_sh[k] + e2_sh[k]) % 2;
+                if (k == 14) {
+                    cout << W2_sh[k];
+                } else {
+                    cout << W2_sh[k] << ", ";
+                }
+            }
+
+            cout << "}, значит ошибка допущена в " << i << " и " << j << " бите и" << endl;
+            cout << "V = {";
+
+            W2_sh[i] = (W2_sh[i] + 1) % 2;
+            W2_sh[j] = (W2_sh[j] + 1) % 2;
+
+            for (int m = 0; m < 15; m++) {
+                if (m == 14) {
+                    cout << W2_sh[m] << "}" << endl << endl;
+                } else {
+                    cout << W2_sh[m] << ", ";
+                }
+            }
+
+            e2_sh[j] = 0;
         }
 
-        dop_mas_e2[i] = 0;
+        e2_sh[i] = 0;
         ind = true;
     }
 
-    cout << "e = {" << endl;
+    cout<<"Расширенный код:"<<endl;
 
-    for (int i = 0; i < 105; i++) {
-        for (int j = 0; j < 15; j++) {
-            cout << e2_sh[i][j] << " ";
+    int e2_ex[16];
+    int W2_ex[16];
+    int S2_ex[5];
+    bool ind_ex = false;
+    int j_ex = 1;
+
+    for (int i = 0; i < 16; i++) {
+        e2_ex[i] = 0;
+    }
+
+    for (int i = 0; i < 119; i++) {
+        if (ind) {
+            j_ex = i + 1;
+            ind_ex = false;
         }
-        cout << endl;
+
+        e2_ex[i] = 1;
+
+
+        for (j_ex; j_ex < 16; j_ex++) {
+            e2_ex[j_ex] = 1;
+
+            for (int k = 0; k < 5; k++) {
+                int sum = 0;
+                for (int n = 0; n < 16; n++) {
+                    sum = (sum + W2_ex[n] * H_ex_T[n][k]) % 2;
+                }
+                S2_ex[k] = sum;
+            }
+
+            cout << "Если S = {";
+
+            for (int m = 0; m < 5; m++) {
+                if (m == 4) {
+                    cout << S2_ex[m];
+                } else {
+                    cout << S2_ex[m] << ", ";
+                }
+            }
+            cout << "}, то" << endl;
+
+            cout << "e = {";
+            for (int k = 0; k < 16; k++) {
+                if (k == 15) {
+                    cout << e2_ex[k];
+                } else {
+                    cout << e2_ex[k] << ", ";
+                }
+            }
+
+            cout << "}," << endl;
+
+            cout << "W = {";
+
+            for (int k = 0; k < 16; k++) {
+                W2_ex[k] = (V_ex[k] + e2_ex[k]) % 2;
+                if (k == 15) {
+                    cout << W2_ex[k];
+                } else {
+                    cout << W2_ex[k] << ", ";
+                }
+            }
+
+            cout << "}, значит ошибка допущена в " << i << " и " << j_ex << " бите и" << endl;
+            cout << "V = {";
+
+            W2_ex[i] = (W2_ex[i] + 1) % 2;
+            W2_ex[j_ex] = (W2_ex[j_ex] + 1) % 2;
+
+            for (int m = 0; m < 16; m++) {
+                if (m == 15) {
+                    cout << W2_ex[m] << "}" << endl << endl;
+                } else {
+                    cout << W2_ex[m] << ", ";
+                }
+            }
+
+            e2_ex[j_ex] = 0;
+        }
+
+        e2_ex[i] = 0;
+        ind_ex = true;
     }
 
     return 0;
