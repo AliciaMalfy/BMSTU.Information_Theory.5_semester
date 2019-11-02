@@ -409,35 +409,15 @@ int main() {
     }
 
     for (int i = 0; i < 119; i++) {
-        if (ind) {
+        if (ind_ex) {
             j_ex = i + 1;
             ind_ex = false;
         }
 
         e2_ex[i] = 1;
 
-
         for (j_ex; j_ex < 16; j_ex++) {
             e2_ex[j_ex] = 1;
-
-            for (int k = 0; k < 5; k++) {
-                int sum = 0;
-                for (int n = 0; n < 16; n++) {
-                    sum = (sum + W2_ex[n] * H_ex_T[n][k]) % 2;
-                }
-                S2_ex[k] = sum;
-            }
-
-            cout << "Если S = {";
-
-            for (int m = 0; m < 5; m++) {
-                if (m == 4) {
-                    cout << S2_ex[m];
-                } else {
-                    cout << S2_ex[m] << ", ";
-                }
-            }
-            cout << "}, то" << endl;
 
             cout << "e = {";
             for (int k = 0; k < 16; k++) {
@@ -462,6 +442,26 @@ int main() {
             }
 
             cout << "}, значит ошибка допущена в " << i << " и " << j_ex << " бите и" << endl;
+
+            for (int k = 0; k < 5; k++) {
+                int sum = 0;
+                for (int n = 0; n < 16; n++) {
+                    sum = (sum + W2_ex[n] * H_ex_T[n][k]) % 2;
+                }
+                S2_ex[k] = sum;
+            }
+
+            cout << "при S = {";
+
+            for (int m = 0; m < 5; m++) {
+                if (m == 4) {
+                    cout << S2_ex[m];
+                } else {
+                    cout << S2_ex[m] << ", ";
+                }
+            }
+            cout << "} ";
+
             cout << "V = {";
 
             W2_ex[i] = (W2_ex[i] + 1) % 2;
