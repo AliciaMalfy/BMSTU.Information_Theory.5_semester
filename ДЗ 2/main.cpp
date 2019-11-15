@@ -343,7 +343,6 @@ int main() {
 
             cout << "Если S = {";
 
-
             for (int m = 0; m < 4; m++) {
                 if (m == 3) {
                     cout << S2_sh[m];
@@ -396,7 +395,7 @@ int main() {
         ind = true;
     }
 
-    cout<<"Расширенный код:"<<endl;
+    cout << "Расширенный код:" << endl;
 
     int e2_ex[16];
     int W2_ex[16];
@@ -437,7 +436,7 @@ int main() {
                 if (k == 15) {
                     cout << W2_ex[k];
                 } else {
-                    cout << W2_ex[k] << ", ";
+                    cout << W2_ex[k] << "   , ";
                 }
             }
 
@@ -481,6 +480,10 @@ int main() {
         e2_ex[i] = 0;
         ind_ex = true;
     }
+
+    cout << "Для заданий 4 и 5 приведём несколько примеров" << endl;
+    cout << "Задание 4:" << endl;
+
 
     return 0;
 }
