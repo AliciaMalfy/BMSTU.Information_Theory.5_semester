@@ -484,6 +484,90 @@ int main() {
     cout << "Для заданий 4 и 5 приведём несколько примеров" << endl;
     cout << "Задание 4:" << endl;
 
+    int e4_sh[15] = {1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    int e4_ex[16] = {1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+    int W4_sh[15];
+    int W4_ex[15];
+
+    int S4_sh[4];
+    int S4_ex[5];
+
+    cout << "e = ";
+    for (int i = 0; i < 15; i++) {
+        cout << e4_sh[i] << " ";
+    }
+    cout << endl;
+
+    cout << "V = ";
+    for (int i = 0; i < 15; i++) {
+        cout << V_sh[i] << " ";
+    }
+    cout << endl;
+
+    for (int i = 0; i < 15; i++) {
+        W4_sh[i] = (V_sh[i] + e4_sh[i]) % 2;
+    }
+
+    cout << "W = ";
+    for (int i = 0; i < 15; i++) {
+        cout << W4_sh[i] << " ";
+    }
+    cout << endl;
+
+    for (int k = 0; k < 4; k++) {
+        int sum = 0;
+        for (int i = 0; i < 15; i++) {
+            for (int j = 0; j < 15; j++) {
+                sum = (sum + W4_sh[j] * H_sh_T[j][k]) % 2;
+            }
+            S4_sh[k] = sum;
+        }
+    }
+
+    cout << "S = ";
+    for (int j = 0; j < 4; j++) {
+        cout << S4_sh[j] << " ";
+    }
+    cout << ", значит ошибка допущена в 0 и 3 битах" << endl << endl;
+
+    cout << "e = ";
+    for (int i = 0; i < 16; i++) {
+        cout << e4_ex[i] << " ";
+    }
+    cout << endl;
+
+    cout << "V = ";
+    for (int i = 0; i < 16; i++) {
+        cout << V_ex[i] << " ";
+    }
+    cout << endl;
+
+    for (int i = 0; i < 16; i++) {
+        W4_ex[i] = (V_ex[i] + e4_ex[i]) % 2;
+    }
+
+    cout << "W = ";
+    for (int i = 0; i < 16; i++) {
+        cout << W4_ex[i] << " ";
+    }
+    cout << endl;
+
+    for (int k = 0; k < 5; k++) {
+        int sum = 0;
+        for (int i = 0; i < 16; i++) {
+            for (int j = 0; j < 16; j++) {
+                sum = (sum + W4_ex[j] * H_ex_T[j][k]) % 2;
+            }
+            S4_ex[k] = sum;
+        }
+    }
+
+    cout << "S = ";
+    for (int j = 0; j < 5; j++) {
+        cout << S4_ex[j] << " ";
+    }
+    cout << ", значит ошибка допущена в 0 и 6 битах" << endl << endl;
 
     return 0;
 }
