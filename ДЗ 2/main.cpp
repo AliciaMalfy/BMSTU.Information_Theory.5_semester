@@ -59,6 +59,7 @@ int main() {
     }
 
     cout << V_ex[15] << "}" << endl << endl;
+
     cout << "Задание 2:" << endl;
     cout << "Укороченный код:" << endl << endl;
 
@@ -336,7 +337,7 @@ int main() {
             for (int k = 0; k < 4; k++) {
                 int sum = 0;
                 for (int n = 0; n < 15; n++) {
-                    sum = (sum + W2_sh[n] * H_sh_T[n][k]) % 2;
+                    sum = (sum + e2_sh[n] * H_sh_T[n][k]) % 2;
                 }
                 S2_sh[k] = sum;
             }
@@ -397,6 +398,24 @@ int main() {
 
     cout << "Расширенный код:" << endl;
 
+    cout << "V = {";
+
+    for (int i = 0; i < 11; i++) {
+        V_ex[i] = U[i];
+    }
+
+    V_ex[11] = (V_ex[4] + V_ex[5] + V_ex[6] + V_ex[7] + V_ex[8] + V_ex[9] + V_ex[10]) % 2;
+    V_ex[12] = (V_ex[1] + V_ex[2] + V_ex[3] + V_ex[7] + V_ex[8] + V_ex[9] + V_ex[10]) % 2;
+    V_ex[13] = (V_ex[0] + V_ex[2] + V_ex[3] + V_ex[5] + V_ex[6] + V_ex[9] + V_ex[10]) % 2;
+    V_ex[14] = (V_ex[0] + V_ex[1] + V_ex[3] + V_ex[4] + V_ex[6] + V_ex[8] + V_ex[10]) % 2;
+    V_ex[15] = (V_ex[0] + V_ex[1] + V_ex[2] + V_ex[4] + V_ex[5] + V_ex[7] + V_ex[10]) % 2;
+
+    for (int i = 0; i < 15; i++) {
+        cout << V_ex[i] << ", ";
+    }
+
+    cout << V_ex[15] << "}" << endl << endl;
+
     int e2_ex[16];
     int W2_ex[16];
     int S2_ex[5];
@@ -436,7 +455,7 @@ int main() {
                 if (k == 15) {
                     cout << W2_ex[k];
                 } else {
-                    cout << W2_ex[k] << "   , ";
+                    cout << W2_ex[k] << ", ";
                 }
             }
 
@@ -445,7 +464,7 @@ int main() {
             for (int k = 0; k < 5; k++) {
                 int sum = 0;
                 for (int n = 0; n < 16; n++) {
-                    sum = (sum + W2_ex[n] * H_ex_T[n][k]) % 2;
+                    sum = (sum + e2_ex[n] * H_ex_T[n][k]) % 2;
                 }
                 S2_ex[k] = sum;
             }
@@ -483,19 +502,20 @@ int main() {
 
     cout << "Для заданий 4 и 5 приведём несколько примеров" << endl;
     cout << "Задание 4:" << endl;
+    cout << "Укороченный код:" << endl;
 
-    int e4_sh[15] = {1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    int e4_ex[16] = {1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    int e3_sh[15] = {1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0};
+    int e3_ex[16] = {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0};
 
-    int W4_sh[15];
-    int W4_ex[15];
+    int W3_sh[15];
+    int W3_ex[15];
 
-    int S4_sh[4];
-    int S4_ex[5];
+    int S3_sh[4];
+    int S3_ex[5];
 
     cout << "e = ";
     for (int i = 0; i < 15; i++) {
-        cout << e4_sh[i] << " ";
+        cout << e3_sh[i] << " ";
     }
     cout << endl;
 
@@ -506,12 +526,12 @@ int main() {
     cout << endl;
 
     for (int i = 0; i < 15; i++) {
-        W4_sh[i] = (V_sh[i] + e4_sh[i]) % 2;
+        W3_sh[i] = (V_sh[i] + e3_sh[i]) % 2;
     }
 
     cout << "W = ";
     for (int i = 0; i < 15; i++) {
-        cout << W4_sh[i] << " ";
+        cout << W3_sh[i] << " ";
     }
     cout << endl;
 
@@ -519,17 +539,64 @@ int main() {
         int sum = 0;
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15; j++) {
-                sum = (sum + W4_sh[j] * H_sh_T[j][k]) % 2;
+                sum = (sum + e3_sh[j] * H_sh_T[j][k]) % 2;
             }
-            S4_sh[k] = sum;
+            S3_sh[k] = sum;
         }
     }
 
     cout << "S = ";
     for (int j = 0; j < 4; j++) {
-        cout << S4_sh[j] << " ";
+        cout << S3_sh[j] << " ";
     }
-    cout << ", значит ошибка допущена в 0 и 3 битах" << endl << endl;
+    cout << ", значит ошибка допущена в 0, 3 и 10 битах" << endl;
+    // cout<<"Вариант необнаруживаемой ошибки:"<< endl;
+    // cout<<"W = "
+
+    cout << "Расширенный код:" << endl;
+
+    cout << "e = ";
+    for (int i = 0; i < 16; i++) {
+        cout << e3_ex[i] << " ";
+    }
+    cout << endl;
+
+    cout << "V = ";
+    for (int i = 0; i < 16; i++) {
+        cout << V_ex[i] << " ";
+    }
+    cout << endl;
+
+    for (int i = 0; i < 16; i++) {
+        W3_ex[i] = (V_ex[i] + e3_ex[i]) % 2;
+    }
+
+    cout << "W = ";
+    for (int i = 0; i < 16; i++) {
+        cout << W3_ex[i] << " ";
+    }
+    cout << endl;
+
+    for (int k = 0; k < 5; k++) {
+        int sum = 0;
+        for (int n = 0; n < 16; n++) {
+            sum = (sum + e3_ex[n] * H_ex_T[n][k]) % 2;
+        }
+        S3_ex[k] = sum;
+    }
+
+    cout << "S = ";
+    for (int j = 0; j < 5; j++) {
+        cout << S3_ex[j] << " ";
+    }
+    cout << ", значит ошибка допущена в 0, 4 и 12 битах" << endl << endl;
+
+    cout << "Задание 5:" << endl;
+    cout << "Расширенный код:" << endl;
+
+    int e4_ex[16] = {0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0};
+    int W4_ex[16];
+    int S4_ex[5];
 
     cout << "e = ";
     for (int i = 0; i < 16; i++) {
@@ -555,19 +622,18 @@ int main() {
 
     for (int k = 0; k < 5; k++) {
         int sum = 0;
-        for (int i = 0; i < 16; i++) {
-            for (int j = 0; j < 16; j++) {
-                sum = (sum + W4_ex[j] * H_ex_T[j][k]) % 2;
-            }
-            S4_ex[k] = sum;
+        for (int n = 0; n < 16; n++) {
+            sum = (sum + e4_ex[n] * H_ex_T[n][k]) % 2;
         }
+        S4_ex[k] = sum;
     }
 
     cout << "S = ";
     for (int j = 0; j < 5; j++) {
         cout << S4_ex[j] << " ";
     }
-    cout << ", значит ошибка допущена в 0 и 6 битах" << endl << endl;
+
+    cout<<", значит ошибка допущена во 2, 5, 8 и 16 битах"<<endl;
 
     return 0;
 }
